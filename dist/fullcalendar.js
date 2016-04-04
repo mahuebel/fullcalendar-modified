@@ -9870,6 +9870,7 @@ function EventManager(options) { // assumed to be a calendar
 	t.fetchEvents = fetchEvents;
 	t.addEventSource = addEventSource;
 	t.removeEventSource = removeEventSource;
+	t.removeEventSources = removeEventSources;
 	t.updateEvent = updateEvent;
 	t.renderEvent = renderEvent;
 	t.removeEvents = removeEvents;
@@ -10143,6 +10144,15 @@ function EventManager(options) { // assumed to be a calendar
 		cache = $.grep(cache, function(e) {
 			return !isSourcesEqual(e.source, source);
 		});
+		reportEvents(cache);
+	}
+
+	function removeEventSources() {
+		sources = [];
+
+		//remove all client events from all sources
+		cache = [];
+
 		reportEvents(cache);
 	}
 
